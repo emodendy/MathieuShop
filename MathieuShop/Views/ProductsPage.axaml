@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:CompileBindings="False"
+             x:Class="MathieuShop.Views.ProductsPage">
+
+    <DockPanel Background="#FFFFFF">
+
+        <!-- Tabs -->
+        <Border DockPanel.Dock="Top"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,0,0,1"
+                Background="#FFFFFF"
+                Padding="12,0">
+            <StackPanel Orientation="Horizontal" Spacing="0">
+                <Button Name="TabKastomButton"
+                        Content="Кастом"
+                        Height="40"
+                        Padding="20,0"
+                        Background="Transparent"
+                        Foreground="#4F46E5"
+                        BorderThickness="0,0,0,2"
+                        BorderBrush="#4F46E5"
+                        CornerRadius="0"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Click="TabKastomButton_Click"/>
+                <Button Name="TabKosplayButton"
+                        Content="Косплей"
+                        Height="40"
+                        Padding="20,0"
+                        Background="Transparent"
+                        Foreground="#6B7280"
+                        BorderThickness="0"
+                        CornerRadius="0"
+                        FontSize="13"
+                        Click="TabKosplayButton_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Bottom bar -->
+        <Border DockPanel.Dock="Bottom"
+                Background="#F9FAFB"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,1,0,0"
+                Padding="16,8">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Grid.Column="0"
+                           Name="PageInfoText"
+                           Text="0-0 из 0"
+                           FontSize="12"
+                           Foreground="#6B7280"
+                           VerticalAlignment="Center"/>
+                <Button Grid.Column="1"
+                        Name="AddButton"
+                        Content="+ Добавить"
+                        Height="30"
+                        Padding="14,0"
+                        Background="#4F46E5"
+                        Foreground="White"
+                        BorderThickness="0"
+                        CornerRadius="6"
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Click="AddButton_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Cards -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Name="CardsPanel" Spacing="0"/>
+        </ScrollViewer>
+
+    </DockPanel>
+</UserControl>

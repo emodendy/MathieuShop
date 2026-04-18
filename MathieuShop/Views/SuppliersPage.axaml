@@ -1,0 +1,122 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:data="clr-namespace:MathieuShop.Data"
+             mc:Ignorable="d"
+             x:CompileBindings="False"
+             x:Class="MathieuShop.Views.SuppliersPage">
+
+    <DockPanel Background="#FFFFFF">
+
+        <Border DockPanel.Dock="Top"
+                Background="#FFFFFF"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,0,0,1"
+                Padding="20,14">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Grid.Column="0"
+                           Text="Поставщики"
+                           FontSize="18" FontWeight="SemiBold"
+                           Foreground="#111827" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Name="AddButton"
+                        Content="+ Добавить"
+                        Height="32" Padding="16,0"
+                        Background="#4F46E5" Foreground="White"
+                        BorderThickness="0" CornerRadius="6"
+                        FontSize="13" FontWeight="SemiBold"
+                        Click="AddButton_Click"/>
+            </Grid>
+        </Border>
+
+        <Border DockPanel.Dock="Top"
+                Background="#F9FAFB"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,0,0,1"
+                Padding="16,8">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+                <TextBlock Text="Сортировка:" Foreground="#6B7280" FontSize="12"
+                           VerticalAlignment="Center" Margin="0,0,4,0"/>
+                <Button Name="SortNameButton" Content="Компания ↑↓"
+                        Height="28" Padding="12,0"
+                        Background="#FFFFFF" Foreground="#374151"
+                        BorderBrush="#E5E7EB" BorderThickness="1"
+                        CornerRadius="6" FontSize="12"
+                        Click="SortNameButton_Click"/>
+                <Button Name="SortContactButton" Content="Контакт ↑↓"
+                        Height="28" Padding="12,0"
+                        Background="#FFFFFF" Foreground="#374151"
+                        BorderBrush="#E5E7EB" BorderThickness="1"
+                        CornerRadius="6" FontSize="12"
+                        Click="SortContactButton_Click"/>
+            </StackPanel>
+        </Border>
+
+        <Border DockPanel.Dock="Bottom"
+                Background="#F9FAFB"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,1,0,0"
+                Padding="16,8">
+            <Grid ColumnDefinitions="*,Auto,*">
+                <TextBlock Grid.Column="0" Name="PageInfoText"
+                           Text="Страница 1 из 1"
+                           Foreground="#6B7280" FontSize="12" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                    <Button Name="PrevPageButton" Content="← Назад"
+                            Height="28" Padding="12,0"
+                            Background="#FFFFFF" Foreground="#374151"
+                            BorderBrush="#E5E7EB" BorderThickness="1"
+                            CornerRadius="6" FontSize="12"
+                            Click="PrevPageButton_Click"/>
+                    <Button Name="NextPageButton" Content="Вперёд →"
+                            Height="28" Padding="12,0"
+                            Background="#FFFFFF" Foreground="#374151"
+                            BorderBrush="#E5E7EB" BorderThickness="1"
+                            CornerRadius="6" FontSize="12"
+                            Click="NextPageButton_Click"/>
+                </StackPanel>
+                <TextBlock Grid.Column="2" Name="TotalRecordsText"
+                           Text="Всего: 0"
+                           Foreground="#6B7280" FontSize="12"
+                           HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <DataGrid Name="SuppliersGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  GridLinesVisibility="Horizontal"
+                  BorderThickness="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding SupplierId}" Width="50"/>
+                <DataGridTextColumn Header="Компания" Binding="{Binding CompanyName}" Width="*"/>
+                <DataGridTextColumn Header="Контакт" Binding="{Binding ContactName}" Width="*"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="130"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="160"/>
+                <DataGridTextColumn Header="Обновлено"
+                                    Binding="{Binding UpdatedAt, StringFormat={}{0:dd.MM.yyyy HH:mm}}"
+                                    Width="130"/>
+                <DataGridTemplateColumn Header="Действия" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="data:Supplier">
+                            <StackPanel Orientation="Horizontal" Spacing="6" Margin="8,4">
+                                <Button Content="Изменить"
+                                        Height="26" Padding="10,0"
+                                        Background="#EEF2FF" Foreground="#4F46E5"
+                                        BorderBrush="#C7D2FE" BorderThickness="1"
+                                        CornerRadius="5" FontSize="11"
+                                        Tag="{Binding}" Click="EditSupplierButton_Click"/>
+                                <Button Content="Удалить"
+                                        Height="26" Padding="10,0"
+                                        Background="#FEF2F2" Foreground="#DC2626"
+                                        BorderBrush="#FECACA" BorderThickness="1"
+                                        CornerRadius="5" FontSize="11"
+                                        Tag="{Binding}" Click="DeleteSupplierButton_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

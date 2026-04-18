@@ -1,0 +1,135 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="MathieuShop.Views.LoginWindow"
+        Title="MathieuShop"
+        Width="400" Height="500"
+        MinWidth="400" MinHeight="500"
+        MaxWidth="400" MaxHeight="500"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        SystemDecorations="None"
+        Background="Transparent">
+
+    <Window.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="Foreground" Value="#111827"/>
+            <Setter Property="BorderBrush" Value="#D1D5DB"/>
+            <Setter Property="CaretBrush" Value="#111827"/>
+            <Setter Property="SelectionBrush" Value="#C7D2FE"/>
+            <Setter Property="SelectionForegroundBrush" Value="#111827"/>
+        </Style>
+        <Style Selector="TextBox:focus">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#4F46E5"/>
+        </Style>
+        <Style Selector="TextBox:pointerover">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#9CA3AF"/>
+        </Style>
+    </Window.Styles>
+
+    <Border CornerRadius="12"
+            Background="#FFFFFF"
+            BorderBrush="#E5E7EB"
+            BorderThickness="1"
+            ClipToBounds="True">
+
+        <Grid RowDefinitions="44,*">
+
+            <!-- Title bar -->
+            <Border Grid.Row="0"
+                    Background="#F9FAFB"
+                    BorderBrush="#E5E7EB"
+                    BorderThickness="0,0,0,1"
+                    PointerPressed="TitleBar_PointerPressed">
+                <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                    <Image Grid.Column="0"
+                           Name="LogoImage"
+                           Width="22" Height="22"
+                           Margin="12,0,8,0"
+                           VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1"
+                               Text="MathieuShop"
+                               FontSize="13" FontWeight="SemiBold"
+                               Foreground="#111827"
+                               VerticalAlignment="Center"/>
+                    <Button Grid.Column="2" Name="MinimizeButton"
+                            Content="—" Width="36" Height="44"
+                            Padding="0" Background="Transparent"
+                            Foreground="#6B7280" BorderThickness="0"
+                            Click="MinimizeButton_Click"/>
+                    <Button Grid.Column="3" Name="CloseButton"
+                            Content="✕" Width="36" Height="44"
+                            Padding="0" Background="Transparent"
+                            Foreground="#6B7280" BorderThickness="0"
+                            Click="CloseButton_Click"/>
+                </Grid>
+            </Border>
+
+            <!-- Form -->
+            <StackPanel Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Width="300"
+                        Spacing="16">
+
+                <Image Name="LogoBigImage"
+                       Width="72" Height="72"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,4"/>
+
+                <StackPanel Spacing="4" HorizontalAlignment="Center">
+                    <TextBlock Text="Вход в систему"
+                               FontSize="20" FontWeight="Bold"
+                               Foreground="#111827"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Только для администраторов"
+                               FontSize="12" Foreground="#6B7280"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Логин" FontSize="12" FontWeight="SemiBold"
+                               Foreground="#374151"/>
+                    <TextBox Name="LoginBox"
+                             Watermark="Введите логин"
+                             Height="38" FontSize="13"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Пароль" FontSize="12" FontWeight="SemiBold"
+                               Foreground="#374151"/>
+                    <TextBox Name="PasswordBox"
+                             Watermark="Введите пароль"
+                             PasswordChar="●"
+                             Height="38" FontSize="13"/>
+                </StackPanel>
+
+                <TextBlock Name="ErrorText"
+                           Text=""
+                           Foreground="#EF4444"
+                           FontSize="12"
+                           HorizontalAlignment="Center"
+                           IsVisible="False"/>
+
+                <Button Name="LoginButton"
+                        Content="Войти"
+                        Height="40"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        Background="#4F46E5"
+                        Foreground="White"
+                        BorderThickness="0"
+                        CornerRadius="8"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        Click="LoginButton_Click"/>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,215 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="MathieuShop.MainWindow"
+        x:CompileBindings="False"
+        Title="MathieuShop"
+        Width="1060"
+        Height="680"
+        MinWidth="1060"
+        MinHeight="680"
+        MaxWidth="1060"
+        MaxHeight="680"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        SystemDecorations="None"
+        Background="Transparent">
+
+    <Border Background="#FFFFFF"
+            BorderBrush="#E5E7EB"
+            BorderThickness="1"
+            CornerRadius="8"
+            ClipToBounds="True">
+
+        <Grid RowDefinitions="44,*">
+
+            <!-- ══ TITLE BAR ══ -->
+            <Border Grid.Row="0"
+                    Background="#FFFFFF"
+                    BorderBrush="#E5E7EB"
+                    BorderThickness="0,0,0,1"
+                    PointerPressed="TitleBar_PointerPressed">
+                <Grid ColumnDefinitions="Auto,*,Auto">
+                    <TextBlock Grid.Column="0"
+                               Text="MathieuShop"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="#111827"
+                               VerticalAlignment="Center"
+                               Margin="16,0,0,0"/>
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                Spacing="4"
+                                Margin="0,8,10,8">
+                        <Button Name="MinimizeButton"
+                                Content="Свернуть"
+                                Width="76"
+                                Height="28"
+                                FontSize="11"
+                                Background="#F3F4F6"
+                                Foreground="#374151"
+                                BorderBrush="#E5E7EB"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Padding="0"
+                                HorizontalContentAlignment="Center"
+                                Click="MinimizeButton_Click"/>
+                        <Button Name="CloseButton"
+                                Content="Закрыть"
+                                Width="76"
+                                Height="28"
+                                FontSize="11"
+                                Background="#FEE2E2"
+                                Foreground="#DC2626"
+                                BorderBrush="#FECACA"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Padding="0"
+                                HorizontalContentAlignment="Center"
+                                Click="CloseButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- ══ BODY ══ -->
+            <Grid Grid.Row="1" ColumnDefinitions="200,*,140">
+
+                <!-- ── LEFT SIDEBAR ── -->
+                <Border Grid.Column="0"
+                        Background="#F9FAFB"
+                        BorderBrush="#E5E7EB"
+                        BorderThickness="0,0,1,0">
+                    <Grid RowDefinitions="Auto,*,Auto" Margin="12,12,12,12">
+
+                        <!-- Лого — сверху -->
+                        <Border Grid.Row="0"
+                                Height="90"
+                                Background="#FFFFFF"
+                                BorderBrush="#E5E7EB"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Margin="0,0,0,0"
+                                ClipToBounds="True">
+                            <Grid>
+                                <Image Name="LogoImage" Stretch="Uniform" Margin="8"/>
+                                <TextBlock Name="LogoPlaceholder"
+                                           Text="Лого"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="#9CA3AF"
+                                           FontSize="13"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Пустое пространство посередине -->
+                        <Border Grid.Row="1"/>
+
+                        <!-- Услуги + Выход — снизу -->
+                        <StackPanel Grid.Row="2" Spacing="6" Margin="0,0,0,4">
+                            <Button Name="NavServicesButton"
+                                    Content="Услуги"
+                                    Height="36"
+                                    Background="#FFFFFF"
+                                    Foreground="#374151"
+                                    BorderBrush="#E5E7EB"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    FontSize="13"/>
+                            <Button Name="NavExitButton"
+                                    Content="Выход"
+                                    Height="36"
+                                    Background="#FEF2F2"
+                                    Foreground="#DC2626"
+                                    BorderBrush="#FECACA"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    FontSize="13"/>
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+
+                <!-- ── CENTER ── -->
+                <ContentControl Grid.Column="1" Name="MainContent"/>
+
+                <!-- ── RIGHT PANEL ── -->
+                <Border Grid.Column="2"
+                        Background="#F9FAFB"
+                        BorderBrush="#E5E7EB"
+                        BorderThickness="1,0,0,0"
+                        Padding="12,14">
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top" Spacing="8">
+                            <TextBox Name="SearchBox"
+                                     Watermark="Поиск..."
+                                     Height="32"
+                                     FontSize="12"
+                                     TextChanged="SearchBox_TextChanged"/>
+                            <ComboBox Name="CollectionBox"
+                                      PlaceholderText="Коллекция"
+                                      Height="32"
+                                      FontSize="12"
+                                      HorizontalAlignment="Stretch"
+                                      SelectionChanged="CollectionBox_SelectionChanged"/>
+                        </StackPanel>
+
+                        <StackPanel DockPanel.Dock="Top"
+                                    Margin="0,8,0,0">
+                            <Button Name="SortAlphaButton"
+                                    Content="А → Я"
+                                    Height="32"
+                                    FontSize="12"
+                                    Background="#FFFFFF"
+                                    Foreground="#374151"
+                                    BorderBrush="#E5E7EB"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    Click="SortAlphaButton_Click"/>
+                        </StackPanel>
+
+                        <StackPanel DockPanel.Dock="Top"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Spacing="10"
+                                    Margin="0,16,0,0">
+                            <Button Name="PrevPageButton"
+                                    Content="◀"
+                                    Width="40" Height="40"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Background="#EEF2FF"
+                                    Foreground="#4F46E5"
+                                    BorderBrush="#C7D2FE"
+                                    BorderThickness="1"
+                                    CornerRadius="8"
+                                    HorizontalContentAlignment="Center"
+                                    Click="PrevPageButton_Click"/>
+                            <Button Name="NextPageButton"
+                                    Content="▶"
+                                    Width="40" Height="40"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Background="#EEF2FF"
+                                    Foreground="#4F46E5"
+                                    BorderBrush="#C7D2FE"
+                                    BorderThickness="1"
+                                    CornerRadius="8"
+                                    HorizontalContentAlignment="Center"
+                                    Click="NextPageButton_Click"/>
+                        </StackPanel>
+                        <Border DockPanel.Dock="Top" Height="0"/>
+                    </DockPanel>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

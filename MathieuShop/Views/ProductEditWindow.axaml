@@ -1,0 +1,130 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="MathieuShop.Views.ProductEditWindow"
+        Title="Продукт"
+        Width="480" Height="620"
+        MinWidth="480" MinHeight="620"
+        MaxWidth="480" MaxHeight="620"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        SystemDecorations="None"
+        Background="Transparent">
+
+    <Border CornerRadius="10" Background="#FFFFFF"
+            BorderBrush="#E5E7EB" BorderThickness="1" ClipToBounds="True">
+        <Grid RowDefinitions="Auto,*,Auto">
+
+            <Border Grid.Row="0" Background="#F9FAFB"
+                    BorderBrush="#E5E7EB" BorderThickness="0,0,0,1"
+                    Padding="16,12" PointerPressed="TitleBar_PointerPressed">
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <TextBlock Grid.Column="0" Name="WindowTitle" Text="Продукт"
+                               FontSize="14" FontWeight="SemiBold" Foreground="#111827"
+                               VerticalAlignment="Center"/>
+                    <Button Grid.Column="1" Name="MinimizeButton" Content="—"
+                            Width="28" Height="26" Padding="0"
+                            Background="Transparent" Foreground="#6B7280"
+                            BorderThickness="0" Click="MinimizeButton_Click"/>
+                    <Button Grid.Column="2" Name="CloseButton" Content="✕"
+                            Width="28" Height="26" Padding="0"
+                            Background="Transparent" Foreground="#6B7280"
+                            BorderThickness="0" Click="CloseButton_Click"/>
+                </Grid>
+            </Border>
+
+            <ScrollViewer Grid.Row="1" Padding="20,16">
+                <StackPanel Spacing="14">
+
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Название" FontSize="12" FontWeight="SemiBold"
+                                   Foreground="#374151"/>
+                        <TextBox Name="NameBox" Height="36"/>
+                    </StackPanel>
+
+                    <Grid ColumnDefinitions="*,16,*">
+                        <StackPanel Grid.Column="0" Spacing="5">
+                            <TextBlock Text="Цена (₽)" FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#374151"/>
+                            <TextBox Name="PriceBox" Height="36"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Spacing="5">
+                            <TextBlock Text="Остаток" FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#374151"/>
+                            <TextBox Name="StockBox" Height="36"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,16,*">
+                        <StackPanel Grid.Column="0" Spacing="5">
+                            <TextBlock Text="Категория" FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#374151"/>
+                            <ComboBox Name="CategoryCombo" Height="36"
+                                      HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Spacing="5">
+                            <TextBlock Text="Коллекция" FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#374151"/>
+                            <ComboBox Name="CollectionCombo" Height="36"
+                                      HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Поставщик" FontSize="12" FontWeight="SemiBold"
+                                   Foreground="#374151"/>
+                        <ComboBox Name="SupplierCombo" Height="36"
+                                  HorizontalAlignment="Stretch"/>
+                    </StackPanel>
+
+                    <!-- Image picker -->
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Фото продукта" FontSize="12" FontWeight="SemiBold"
+                                   Foreground="#374151"/>
+                        <Grid ColumnDefinitions="*,10,Auto">
+                            <TextBox Grid.Column="0"
+                                     Name="ImagePathBox"
+                                     Height="36"
+                                     IsReadOnly="True"
+                                     Watermark="Путь к изображению..."/>
+                            <Button Grid.Column="2"
+                                    Content="Выбрать"
+                                    Height="36" Padding="14,0"
+                                    Background="#F3F4F6"
+                                    Foreground="#374151"
+                                    BorderBrush="#E5E7EB"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    FontSize="12"
+                                    Click="PickImageButton_Click"/>
+                        </Grid>
+                        <Border Width="150" Height="110"
+                                BorderBrush="#E5E7EB" BorderThickness="1"
+                                CornerRadius="6" ClipToBounds="True"
+                                HorizontalAlignment="Left"
+                                Background="#F9FAFB">
+                            <Image Name="PreviewImage" Stretch="UniformToFill"/>
+                        </Border>
+                    </StackPanel>
+
+                    <TextBlock Name="ErrorText" Text="" Foreground="#EF4444"
+                               FontSize="12" IsVisible="False"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Border Grid.Row="2" Background="#F9FAFB"
+                    BorderBrush="#E5E7EB" BorderThickness="0,1,0,0"
+                    Padding="20,12">
+                <Button Name="SaveButton" Content="Сохранить"
+                        Height="36" FontSize="13" FontWeight="SemiBold"
+                        Background="#4F46E5" Foreground="White"
+                        BorderThickness="0" CornerRadius="6"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        Click="SaveButton_Click"/>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

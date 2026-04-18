@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="MathieuShop.Views.ConfirmDialog"
+        Title="Подтверждение"
+        Width="360"
+        Height="170"
+        MinWidth="360" MinHeight="170"
+        MaxWidth="360" MaxHeight="170"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        SystemDecorations="None"
+        Background="Transparent">
+
+    <Border CornerRadius="10"
+            Background="#FFFFFF"
+            BorderBrush="#E5E7EB"
+            BorderThickness="1"
+            ClipToBounds="True">
+        <Grid RowDefinitions="Auto,*,Auto">
+
+            <Border Grid.Row="0"
+                    Background="#F9FAFB"
+                    BorderBrush="#E5E7EB"
+                    BorderThickness="0,0,0,1"
+                    Padding="16,12">
+                <TextBlock Text="Подтверждение"
+                           FontWeight="SemiBold"
+                           Foreground="#111827"
+                           FontSize="14"/>
+            </Border>
+
+            <TextBlock Grid.Row="1"
+                       Name="MessageText"
+                       Text=""
+                       Foreground="#374151"
+                       FontSize="13"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="20,0"/>
+
+            <Border Grid.Row="2"
+                    Background="#F9FAFB"
+                    BorderBrush="#E5E7EB"
+                    BorderThickness="0,1,0,0"
+                    Padding="16,10">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Spacing="8">
+                    <Button Name="NoButton"
+                            Content="Отмена"
+                            Width="90" Height="32"
+                            Background="#FFFFFF"
+                            Foreground="#374151"
+                            BorderBrush="#E5E7EB"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            FontSize="13"
+                            HorizontalContentAlignment="Center"
+                            Click="NoButton_Click"/>
+                    <Button Name="YesButton"
+                            Content="Да"
+                            Width="90" Height="32"
+                            Background="#EF4444"
+                            Foreground="White"
+                            BorderThickness="0"
+                            CornerRadius="6"
+                            FontSize="13"
+                            FontWeight="SemiBold"
+                            HorizontalContentAlignment="Center"
+                            Click="YesButton_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
